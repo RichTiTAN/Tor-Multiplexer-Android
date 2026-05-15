@@ -68,7 +68,9 @@ After the process is finished the app will create a socks proxy with this addres
 Note: The initial start-up might take up to 30minutes, be patient, the next launches will be faster.
 
 Uninstall:
-```pkill tor; pkill haproxy; termux-wake-unlock; rm -rf ~/multiplexer; rm -f ~/.shortcuts/start.sh; rm -f ~/.shortcuts/tasks/kill_switch.sh; pkg uninstall tor lyrebird haproxy -y && pkg clean```
+```Bash
+pkill tor; pkill haproxy; termux-wake-unlock; rm -rf ~/multiplexer; rm -f ~/.shortcuts/start.sh; rm -f ~/.shortcuts/tasks/kill_switch.sh; pkg uninstall tor lyrebird haproxy -y && pkg clean
+```
 
 نحوه استفاده:
 
@@ -123,3 +125,5 @@ ip:port (مانند: 127.0.0.1:10880)
 ۶. می‌توانید در هر برنامه پروکسی (برای مثال v2rayNG) یک پروفایل Socks بسازید و از آن آدرس و پورت برای اتصال به اینترنت استفاده کنید. مطمئن شوید که در تنظیمات VPN، برنامه‌ Termux و هر برنامه دیگری که در این پروسه استفاده می‌شود را در حالت Bypass قرار دهید تا تداخلی ایجاد نشود.
 
 نکته: اولین راه‌اندازی ممکن است تا ۳۰ دقیقه طول بکشد، صبور باشید. دفعات بعدی بسیار سریع‌تر خواهد بود.
+
+Creators: @itsTiTANVPN and my buddy Gemini
