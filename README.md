@@ -72,9 +72,9 @@ Note: The initial start-up might take up to 30minutes, be patient, the next laun
 
 ۱. نصب نیازمندی‌ها:
 
-Termux: لینک دانلود
+Termux: https://github.com/termux/termux-app/releases/tag/v0.118.3
 
-Termux Widget: لینک دانلود
+Termux Widget: https://github.com/termux/termux-widget/releases/tag/v0.15.0
 
 ۲. ابتدا نرم افزار termux را اجرا کنید و با کپی کردن یکی از لینک های زیر بر اساس نوع Bridge نصب را شروع کنید:
 
