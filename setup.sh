@@ -9,7 +9,6 @@ echo "Default Bridge: meek_lite"
 
 # --- 2. PROXY CONFIG ---
 echo ""
-# The </dev/tty part is the magic trick that stops it from skipping!
 read -p "Enter Outbound Proxy (format IP:PORT). Leave blank to skip: " PROXY_IN </dev/tty
 
 # --- 3. INSTALL DEPENDENCIES & CREATE FOLDERS ---
@@ -21,14 +20,12 @@ mkdir -p ~/.shortcuts/tasks
 mkdir -p ~/multiplexer
 
 # --- 4. BUILD CONFIG TEMPLATES ---
-# Hardcoding meek_lite as requested
 cat << 'EOF'> ~/multiplexer/bridge.conf
 UseBridges 1
 ClientTransportPlugin meek_lite,obfs2,obfs3,obfs4,scramblesuit,webtunnel exec /data/data/com.termux/files/usr/bin/lyrebird
 Bridge meek_lite 192.0.2.20:80 url=https://1603026938.rsc.cdn77.org front=www.phpmyadmin.net utls=HelloRandomizedALPN
 EOF
 
-# Write Proxy Template
 if [ -n "$PROXY_IN" ]; then
     echo "Socks5Proxy $PROXY_IN" > ~/multiplexer/proxy.conf
 else
@@ -44,8 +41,10 @@ termux-wake-lock
 
 cd ~/multiplexer
 
-# Generate HAProxy Config
+# Generate HAProxy Config with Native Daemon Mode
 cat << 'HAP' > haproxy.cfg
+global
+    daemon
 defaults
     mode tcp
     timeout connect 5s
@@ -64,7 +63,9 @@ backend tor_back
     server tor4 127.0.0.1:9064 check
 HAP
 
-# Generate configs dynamically from the templates and launch
+echo "Starting 4 Tor Engines..."
+
+# Generate configs and launch completely detached
 for i in {1..4}; do
     PORT=$((9060 + i))
     DIR="tor_data_$i"
@@ -75,15 +76,23 @@ for i in {1..4}; do
     cat bridge.conf >> torrc$i
     cat proxy.conf >> torrc$i
 
-    echo "Launching Tor instance $i..."
-    tor -f torrc$i &
+    echo " -> Booting instance $i..."
+    # NOHUP and DISOWN make it immune to terminal crashes
+    nohup tor -f torrc$i > /dev/null 2>&1 &
+    disown
+    
     [ $i -lt 4 ] && sleep 8
 done
 
-haproxy -f haproxy.cfg &
+echo "Starting HAProxy load balancer..."
+nohup haproxy -f haproxy.cfg > /dev/null 2>&1 &
+disown
+
 echo "=========================================="
 echo " MULTIPLEXER ONLINE: 127.0.0.1:10888"
+echo " You can safely close this terminal window."
 echo "=========================================="
+sleep 4
 EOF
 
 # --- 6. GENERATE KILL SWITCH ---
@@ -92,7 +101,7 @@ cat << 'EOF' > ~/.shortcuts/tasks/kill_switch.sh
 pkill tor
 pkill haproxy
 termux-wake-unlock
-echo "Stopped."
+echo "Multiplexer Stopped."
 EOF
 
 # --- 7. FINAL PERMISSIONS ---
@@ -101,4 +110,3 @@ chmod +x ~/.shortcuts/tasks/kill_switch.sh
 
 echo ""
 echo "✅ Setup Finished!"
-echo "Nothing is running yet. Use your Home Screen widgets to start/stop."
