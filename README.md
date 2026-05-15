@@ -41,7 +41,7 @@ curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/ma
 curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-direct.sh](https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-direct.sh) | bash
 ```
 
-Note: if you have problem connecting to the repositories you can run this command:  
+Note: if you have problem connecting to the repositories you can run this command and try again:  
 ```
 echo 'Acquire::http::Timeout "120";' > $PREFIX/etc/apt/apt.conf.d/99timeout  
 echo 'Acquire::ftp::Timeout "120";' >> $PREFIX/etc/apt/apt.conf.d/99timeout
@@ -98,7 +98,7 @@ Direct (بدون Bridge):
 ```Bash
 curl -sL https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-direct.sh | bash
 ```
-نکته: اگر در اتصال به مخازن (Repositories) مشکل دارید، این دستور را اجرا کنید:
+نکته: اگر در اتصال به مخازن (Repositories) مشکل دارید، این دستور را اجرا کنید و دوباره تلاش کنید:
 
 ```Bash
 echo 'Acquire::http::Timeout "120";' > $PREFIX/etc/apt/apt.conf.d/99timeout
