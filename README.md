@@ -59,7 +59,7 @@ Repeat the shortcut creation process, this time choose tasks/ then kill_switch.s
 5. Now you can run Tor Multiplexer using start.sh on your home screen
 After the process is finished the app will create a socks proxy with this address and port: 127.0.0.1:10888
 
-(IMPORTANT NOTE: the app will close after it runs everything but it's running in the background, you'll be able to close it with the kill_switch.sh shortcut you created.
+(IMPORTANT NOTE: the app will close after it runs everything but it's running in the background, you'll be able to close it with the kill_switch.sh shortcut you created.)
 
 
 6. You can create a Socks profile in any proxy app (v2rayNG for example) and use that address and port to connect to the internet. MAKE SURE YOU ALLOW Termux AND ANY OTHER APP YOU MIGHT BE USING FOR THIS SETUP TO BYPASS YOUR VPN APP.
