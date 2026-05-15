@@ -49,7 +49,7 @@ echo 'Acquire::ftp::Timeout "120";' >> $PREFIX/etc/apt/apt.conf.d/99timeout
 
 
 3. The installation will ask if you have an outbound proxy that you want to set up, if you do enter it in this format:
-   ip:port example: 127.0.0.1:10880
+   ip:port (example: 127.0.0.1:10880)
 
 
 4. After the installation is finished, Go to your home screen, create a widget using Termux Widget, create a 1x1 widget, the first time choose start.sh (this will launch tor and HAProxy)
@@ -106,7 +106,7 @@ echo 'Acquire::ftp::Timeout "120";' >> $PREFIX/etc/apt/apt.conf.d/99timeout
 ```
 ۳. در طول نصب از شما پرسیده می‌شود که آیا می‌خواهید یک Outbound Proxy تنظیم کنید؛ اگر دارید، آن را با این فرمت وارد کنید:
 
-ip:port مانند 127.0.0.1:10880
+ip:port (مانند: 127.0.0.1:10880)
 
 ۴. پس از اتمام نصب، به صفحه اصلی گوشی (Home Screen) بروید و با استفاده از Termux Widget یک ویجت ۱x۱ بسازید. برای اولین بار فایل start.sh را انتخاب کنید (این کار باعث اجرای Tor و HAProxy می‌شود).
 
