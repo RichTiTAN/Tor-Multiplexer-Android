@@ -67,6 +67,8 @@ After the process is finished the app will create a socks proxy with this addres
 
 Note: The initial start-up might take up to 30minutes, be patient, the next launches will be faster.
 
+Uninstall:
+```pkill tor; pkill haproxy; termux-wake-unlock; rm -rf ~/multiplexer; rm -f ~/.shortcuts/start.sh; rm -f ~/.shortcuts/tasks/kill_switch.sh; pkg uninstall tor lyrebird haproxy -y && pkg clean```
 
 نحوه استفاده:
 
