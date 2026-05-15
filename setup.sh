@@ -15,9 +15,9 @@ echo "4) None (Direct Connect)"
 echo "=========================================="
 read -p "Selection [1-4]: " B_CHOICE
 
-# Using safe multi-line string variables instead of subshells
+# Define the exact text block for each choice safely
 if [ "$B_CHOICE" == "1" ]; then
-  BRIDGE_BLOCK="UseBridges 1
+BRIDGE_BLOCK="UseBridges 1
 ClientTransportPlugin meek_lite,obfs2,obfs3,obfs4,scramblesuit,webtunnel exec /data/data/com.termux/files/usr/bin/lyrebird
 Bridge obfs4 37.218.245.14:38224 D9A82D2F9C2F65A18407B1D2B764F130847F8B5D cert=bjRaMrr1BRiAW8IE9U5z27fQaYgOhX1UCmOpg2pFpoMvo6ZgQMzLsaTzzQNTlm7hNcb+Sg iat-mode=0
 Bridge obfs4 209.148.46.65:443 74FAD13168806246602538555B5521A0383A1875 cert=ssH+9rP8dG2NLDN2XuFw63hIO/9MNNinLmxQDpVa+7kTOa9/m+tGWT1SmSYpQ9uTBGa6Hw iat-mode=0
@@ -28,27 +28,27 @@ Bridge obfs4 212.83.43.95:443 BFE712113A72899AD685764B211FACD30FF52C31 cert=ayq0
 Bridge obfs4 212.83.43.74:443 39562501228A4D5E27FCA4C0C81A01EE23AE3EE4 cert=PBwr+S8JTVZo6MPdHnkTwXJPILWADLqfMGoVvhZClMq/Urndyd42BwX9YFJHZnBB3H0XCw iat-mode=1"
 
 elif [ "$B_CHOICE" == "2" ]; then
-  BRIDGE_BLOCK="UseBridges 1
+BRIDGE_BLOCK="UseBridges 1
 ClientTransportPlugin meek_lite,obfs2,obfs3,obfs4,scramblesuit,webtunnel exec /data/data/com.termux/files/usr/bin/lyrebird
 Bridge meek_lite 192.0.2.20:80 url=https://1603026938.rsc.cdn77.org front=www.phpmyadmin.net utls=HelloRandomizedALPN"
 
 elif [ "$B_CHOICE" == "3" ]; then
-  BRIDGE_BLOCK="UseBridges 1
+BRIDGE_BLOCK="UseBridges 1
 ClientTransportPlugin snowflake exec /data/data/com.termux/files/usr/bin/lyrebird
 Bridge snowflake 192.0.2.3:80 2B280B23E1107BB62ABFC40DDCC8824814F80A72 fingerprint=2B280B23E1107BB62ABFC40DDCC8824814F80A72 url=https://1098762253.rsc.cdn77.org/ fronts=app.datapacket.com,www.datapacket.com ice=stun:stun.epygi.com:3478,stun:stun.uls.co.za:3478,stun:stun.voipgate.com:3478,stun:stun.mixvoip.com:3478,stun:stun.telnyx.com:3478,stun:stun.hot-chilli.net:3478,stun:stun.fitauto.ru:3478,stun:stun.m-online.net:3478 utls-imitate=hellorandomizedalpn
 Bridge snowflake 192.0.2.4:80 8838024498816A039FCBBAB14E6F40A0843051FA fingerprint=8838024498816A039FCBBAB14E6F40A0843051FA url=https://1098762253.rsc.cdn77.org/ fronts=app.datapacket.com,www.datapacket.com ice=stun:stun.epygi.com:3478,stun:stun.uls.co.za:3478,stun:stun.voipgate.com:3478,stun:stun.mixvoip.com:3478,stun:stun.telnyx.com:3478,stun:stun.hot-chilli.net:3478,stun:stun.fitauto.ru:3478,stun:stun.m-online.net:3478 utls-imitate=hellorandomizedalpn"
 
 else
-  BRIDGE_BLOCK="UseBridges 0"
+BRIDGE_BLOCK="UseBridges 0"
 fi
 
 # --- 3. PROXY CONFIG ---
 echo ""
 read -p "Enter Outbound Proxy (format IP:PORT). Leave blank to skip: " PROXY_IN
 if [ -n "$PROXY_IN" ]; then
-    PROXY_LINE="Socks5Proxy $PROXY_IN"
+PROXY_LINE="Socks5Proxy $PROXY_IN"
 else
-    PROXY_LINE=""
+PROXY_LINE=""
 fi
 
 # --- 4. INSTALL DEPENDENCIES ---
