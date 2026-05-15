@@ -126,4 +126,4 @@ ip:port (مانند: 127.0.0.1:10880)
 
 نکته: اولین راه‌اندازی ممکن است تا ۳۰ دقیقه طول بکشد، صبور باشید. دفعات بعدی بسیار سریع‌تر خواهد بود.
 
-Creators: @itsTiTANVPN and my buddy Gemini
+Creators: [@itsTiTANVPN](https://t.me/itsTitanVPN) and my buddy Gemini
