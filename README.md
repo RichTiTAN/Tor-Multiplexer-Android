@@ -19,9 +19,9 @@ How to use:
 
 *   **Meek:**
   
-    ```bash
-    curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-meek.sh](https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-meek.sh) | bash
-    ```
+ ```bash
+ curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-meek.sh](https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-meek.sh) | bash
+```
     
 *   **Obfs4:**
   
@@ -42,9 +42,10 @@ curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/ma
 ```
 
 Note: if you have problem connecting to the repositories you can run this command:  
+```
 echo 'Acquire::http::Timeout "120";' > $PREFIX/etc/apt/apt.conf.d/99timeout  
-
 echo 'Acquire::ftp::Timeout "120";' >> $PREFIX/etc/apt/apt.conf.d/99timeout
+```
 
 
 3. The installation will ask if you have an outbound proxy that you want to set up, if you do enter it in this format:
