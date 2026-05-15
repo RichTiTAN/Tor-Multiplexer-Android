@@ -15,7 +15,7 @@ How to use:
   - Termux Widget: https://github.com/termux/termux-widget/releases/tag/v0.15.0
 
     
-2. Start the installation based on the bridge type you want to use in tor:
+2. Now run Termux and copy one of the codes below to start the installation based on the bridge type you want to use in tor:
 
 *   **Meek:**
   
@@ -69,13 +69,14 @@ Note: The initial start-up might take up to 30minutes, be patient, the next laun
 
 
 نحوه استفاده:
+
 ۱. نصب نیازمندی‌ها:
 
 Termux: لینک دانلود
 
 Termux Widget: لینک دانلود
 
-۲. شروع نصب بر اساس نوع Bridge مورد نظر شما در Tor:
+۲. ابتدا نرم افزار termux را اجرا کنید و با کپی کردن یکی از لینک های زیر بر اساس نوع Bridge نصب را شروع کنید:
 
 Meek:
 
