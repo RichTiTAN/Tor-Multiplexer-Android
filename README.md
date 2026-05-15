@@ -20,25 +20,25 @@ How to use:
 *   **Meek:**
   
  ```bash
- curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-meek.sh](https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-meek.sh) | bash
+ curl -sL "https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-meek.sh?v=$(date +%s)" | bash
 ```
     
 *   **Obfs4:**
   
 ```bash
-curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-obfs4.sh](https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-obfs4.sh) | bash
+curl -sL "https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-obfs4.sh?v=$(date +%s)" | bash
 ```
 
 *   **Snowflake:**
   
 ```bash
-curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-snowflake.sh](https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-snowflake.sh) | bash
+curl -sL "https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-snowflake.sh?v=$(date +%s)" | bash
 ```
 
 *   **Direct (No Bridge):**
   
 ```bash
-curl -sL [https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-direct.sh](https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-direct.sh) | bash
+curl -sL "https://raw.githubusercontent.com/RichTiTAN/Tor-Multiplexer-Android/main/setup-direct.sh?v=$(date +%s)" | bash
 ```
 
 Note: if you have problem connecting to the repositories you can run this command and try again:  
