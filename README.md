@@ -50,13 +50,14 @@ echo 'Acquire::ftp::Timeout "120";' >> $PREFIX/etc/apt/apt.conf.d/99timeout
 
 3. The installation will ask if you have an outbound proxy that you want to set up, if you do enter it in this format:
    ip:port (example: 127.0.0.1:10880)
+   During the installation you'll also be asked to choose the repository, you can either keep pressing enter to finish the setup or choose a repository to your liking.
 
 
-4. After the installation is finished, Go to your home screen, create a widget using Termux Widget, create a 1x1 widget, the first time choose start.sh (this will launch tor and HAProxy)
+5. After the installation is finished, Go to your home screen, create a widget using Termux Widget, create a 1x1 widget, the first time choose start.sh (this will launch tor and HAProxy)
 Repeat the shortcut creation process, this time choose tasks/ then kill_switch.sh (this will close all the tor connections and HAProxy)
 
 
-5. Now you can run Tor Multiplexer using start.sh on your home screen
+6. Now you can run Tor Multiplexer using start.sh on your home screen
 After the process is finished the app will create a socks proxy with this address and port: 127.0.0.1:10888
 
 (IMPORTANT NOTE: the app will close after it runs everything but it's running in the background, you'll be able to close it with the kill_switch.sh shortcut you created.)
