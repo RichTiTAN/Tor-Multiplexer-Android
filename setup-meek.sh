@@ -33,6 +33,7 @@ cat << 'EOF' > ~/.shortcuts/start.sh
 pkill tor; pkill haproxy; termux-wake-lock
 cd ~/multiplexer
 
+# HAProxy Config for 5 instances
 cat << 'HAP' > haproxy.cfg
 global
     daemon
@@ -53,6 +54,8 @@ backend tor_back
     server tor5 127.0.0.1:9065 check
 HAP
 
+echo "Starting 5 Tor Engines..."
+
 # Launch 5 Tor Instances
 for i in {1..5}; do
     PORT=$((9060 + i))
@@ -60,45 +63,38 @@ for i in {1..5}; do
     mkdir -p $DIR
     echo "SocksPort $PORT" > torrc$i
     echo "DataDirectory $DIR" >> torrc$i
-    echo "Log notice file $DIR/tor.log" >> torrc$i
     cat bridge.conf >> torrc$i
     cat proxy.conf >> torrc$i
     
+    # Pin 1, 2, and 3 to Netherlands
     if [ "$i" -le 3 ]; then
         echo "EntryNodes {nl}" >> torrc$i
         echo "ExitNodes {nl}" >> torrc$i
         echo "StrictNodes 1" >> torrc$i
     fi
 
+    echo " -> Booting instance $i..."
     nohup tor -f torrc$i > /dev/null 2>&1 &
     disown
+    [ $i -lt 5 ] && sleep 8
 done
 
 echo "Starting HAProxy..."
 nohup haproxy -f haproxy.cfg > /dev/null 2>&1 &
 disown
 
-# MONITORING LOOP
-echo "Waiting for Tor connections (this may take a while)..."
-for i in {1..30}; do
-    clear
-    echo "=== BOOTSTRAP PROGRESS ==="
-    for j in {1..5}; do
-        # Extract the last progress percentage from the log
-        PROGRESS=$(grep -o "BOOTSTRAP PROGRESS=[0-9]*" tor_data_$j/tor.log | tail -1 | cut -d'=' -f2)
-        echo "Tor $j: ${PROGRESS:-0}%"
-    done
-    sleep 5
-done
-echo "=========================="
-echo "Multiplexer ready."
+echo "=========================================="
+echo " MULTIPLEXER ONLINE: 127.0.0.1:10888"
+echo " You can safely close this terminal."
+echo "=========================================="
+sleep 3
 EOF
 
 # --- 5. KILL SWITCH ---
 cat << 'EOF' > ~/.shortcuts/tasks/kill_switch.sh
 #!/bin/bash
 pkill tor; pkill haproxy; termux-wake-unlock
-echo "Stopped."
+echo "Multiplexer Stopped."
 EOF
 
 chmod +x ~/.shortcuts/start.sh ~/.shortcuts/tasks/kill_switch.sh
