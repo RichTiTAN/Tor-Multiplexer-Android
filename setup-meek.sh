@@ -9,12 +9,14 @@ echo "=========================================="
 read -p "Enter Outbound Proxy (IP:PORT) or leave blank: " PROXY_IN </dev/tty
 
 # --- 2. AUTO-FIX REPO ---
-echo "Optimizing repository mirror..."
-termux-change-repo << EOR
-1
-1
-EOR
-pkg update -y && pkg install -y tor lyrebird haproxy
+mkdir -p $PREFIX/etc/apt/sources.list.d
+echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-main stable main" > $PREFIX/etc/apt/sources.list
+mkdir -p $PREFIX/etc/apt/apt.conf.d
+echo 'Acquire::http::Timeout "60";' > $PREFIX/etc/apt/apt.conf.d/99timeout
+echo 'Acquire::ftp::Timeout "60";' >> $PREFIX/etc/apt/apt.conf.d/99timeout
+echo "Installing packages..."
+pkg update -y --allow-downgrade 
+pkg install -y tor lyrebird haproxy
 
 mkdir -p ~/.shortcuts/tasks ~/multiplexer
 
