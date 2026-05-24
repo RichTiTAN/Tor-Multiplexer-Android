@@ -66,9 +66,8 @@ for i in {1..5}; do
     cat bridge.conf >> torrc$i
     cat proxy.conf >> torrc$i
     
-    # Pin 1, 2, and 3 to Netherlands
+    # Pin 1, 2, and 3 to Netherlands Exit Nodes ONLY
     if [ "$i" -le 3 ]; then
-        echo "EntryNodes {nl}" >> torrc$i
         echo "ExitNodes {nl}" >> torrc$i
         echo "StrictNodes 1" >> torrc$i
     fi
