@@ -50,7 +50,6 @@ echo 'Acquire::ftp::Timeout "120";' >> $PREFIX/etc/apt/apt.conf.d/99timeout
 
 3. The installation will ask if you have an outbound proxy that you want to set up, if you do enter it in this format:
    ip:port (example: 127.0.0.1:10880)
-   During the installation you'll also be asked to choose the repository, you can either keep pressing enter to finish the setup or choose a repository to your liking.
 
 
 5. After the installation is finished, Go to your home screen, create a widget using Termux Widget, create a 1x1 widget, the first time choose start.sh (this will launch tor and HAProxy)
